@@ -9,6 +9,8 @@
     <title>Welcome to my website!</title>
 </head>
 
+<!--<body ng-app="CRUDapp">-->
+
 <body>
     <div class="header">
         <div class="container">
@@ -16,11 +18,14 @@
             <span class="col-md-offset-1">Where the price is as low as the quality</span>
         </div>
     </div>
-    <div class="section">
-        <div class="container">
-            
-        </div>
+    <div>
+        <form action="/file" method="POST">
+            <input type="text" placeholder="name" name="name">
+            <input type="text" placeholder="quote" name="quote">
+            <button type="submit">Submit</button>
+        </form>
     </div>
+    <!--    <script src="Angular/app.js"></script> -->
 </body>
 
 </html>
