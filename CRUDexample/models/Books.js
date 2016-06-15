@@ -11,7 +11,7 @@ var BookSchema = new mongoose.Schema({
 , });
 
 BookSchema.methods.update = function(cb){
-    this.title = "Blahblahimatitle";
+    this.cost = 5;
     this.save(cb);
 }
 

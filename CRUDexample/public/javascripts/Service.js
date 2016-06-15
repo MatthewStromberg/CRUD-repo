@@ -20,11 +20,11 @@ app.factory('books', ['$http', function ($http) {
     };
     
     myData.delete = function(book){
-        myData.books.splice(myData.books.indexOf(book),1);
         return $http.delete('/books/' + book._id, book)
    .then(
        function(response){
-           console.log("Deleted!?!?");
+           myData.books.splice(myData.books.indexOf(book),1);
+           console.log("Book deleted!");
          // success callback
        }, 
        function(response){
@@ -34,10 +34,11 @@ app.factory('books', ['$http', function ($http) {
     );
         };
 
-   myData.update = function (post) {
-        return $http.put('/books:' + post._id + '')
+   myData.update = function (book,cost) {
+        return $http.put('/books/' + book._id + '',book)
             .success(function (data) {
-                post.title = "Hiasdklfjh";
+            book.title = data.title;
+//                book.title = "Hiasdklfjh";
             });
     };
     return myData;

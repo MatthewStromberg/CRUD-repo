@@ -26,8 +26,8 @@ router.param('book', function (req, res, next, id) {
     });
 });
 
-router.get('/books/:book', function(req, res) {
-  res.json(req.post);
+router.get('/books/:book', function (req, res) {
+    res.json(req.post);
 });
 
 router.get('/books', function (req, res, next) {
@@ -54,17 +54,36 @@ router.post('/books', function (req, res, next) {
 });
 
 router.delete('/books/:id', function (req, res) {
-    Book.findByIdAndRemove(req.params.id, function(err, data) {
-        
-if (err) {
-           console.log("Error in delete!");
-       }
+    Book.findByIdAndRemove(req.params.id, function (err, data) {
+
+        if (err) {
+            console.log("Error in delete!");
+        }
         return res.json(data);
 
     });
 
 });
-        
+
+router.put('/books/:id', function (req, res) {
+
+    console.log("Books page update request!");
+    Book.findByIdAndUpdate(req.params.id, {
+        "title": "Catcher in the ballpark"
+        , "author": "J.D. Salinger"
+        , "description": "A book about the wonders of a boy who loses his innocence and also this book was banned in most schools"
+        , "cost": 200
+    }, function (err, data) {
+        //    Book.findByIdAndUpdate(req.params.id, {"cost":req.params.cost, function (err, data) {
+        //req.Book.update(function (err, data) {
+        if (err) {
+            console.log("Error in update!");
+        }
+        return res.json(data);
+
+
+    });
+});
 //    Book.findById(id).remove(callback);
 /*        if(err) return next(err);
         console.log("Delete request completed");
