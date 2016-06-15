@@ -1,11 +1,12 @@
 app.controller('MainController', ['$scope', 'books', function ($scope, books) {
     $scope.test = 'Hello world!';
     $scope.books = books.books;
-/*    $scope.incrementUpvotes = function (book) {
-        books.upvote(book);
-    };
-*/
-    $scope.addPost = function () {
+    $scope.deleteBook = function (id) {
+        console.log("Deleting book with id: " + id);
+        books.delete(id);
+    }
+    
+    $scope.addBook = function () {
         if (!$scope.title || $scope.title === '') {
             return;
         }
@@ -21,9 +22,3 @@ app.controller('MainController', ['$scope', 'books', function ($scope, books) {
         $scope.cost = 0;
     };
 }]);
-/*
-app.controller('PostsCtrl', ['$scope', '$stateParams', 'posts', function ($scope, $stateParams, posts) {
-    $scope.post = posts.posts[$stateParams.id];
-
-}]);
-*/

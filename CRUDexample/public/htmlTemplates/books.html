@@ -3,5 +3,5 @@
     <p><span class="me">Author:</span> {{book.author}}</p>
     <p><span class="me">Description:</span> {{book.description}}</p>
     <p><span class="me">Cost ($):</span> {{book.cost}}</p>
-    <button>Delete this book</button>
+    <button ng-click="deleteBook(book._id)">Delete this book</button>
 </div>

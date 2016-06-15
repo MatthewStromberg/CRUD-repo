@@ -2,7 +2,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
     $stateProvider
         .state('home', {
             url: '/home'
-            , templateUrl: '/home.html'
+            , templateUrl: '../htmlTemplates/books.html'
             , controller: 'MainController'
             , resolve: {
                 postPromise: ['books', function (posts) {
