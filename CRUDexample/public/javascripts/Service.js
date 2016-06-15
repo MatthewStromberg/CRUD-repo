@@ -19,17 +19,26 @@ app.factory('books', ['$http', function ($http) {
         });
     };
     
-    myData.delete = function(id){
-        return $http.get('/books/' + id).then(function(res){
-            console.log(res.data)
-            console.log("Deleted!");
-        });
-    };
+    myData.delete = function(book){
+        myData.books.splice(myData.books.indexOf(book),1);
 
-   myData.upvoteComment = function (post, comment) {
-        return $http.put('/books/' + post._id + '/comments/' + comment._id + '/upvote')
+        return $http.delete('/books/', book)
+   .then(
+       function(response){
+           console.log("Deleted!?!?");
+         // success callback
+       }, 
+       function(response){
+           console.log("Delete failed");
+         // failure call back
+       }
+    );
+        };
+
+   myData.update = function (post) {
+        return $http.put('/books/' + post._id + '/title')
             .success(function (data) {
-                comment.upvotes += 1;
+                post.title = "Hiasdklfjh";
             });
     };
     return myData;

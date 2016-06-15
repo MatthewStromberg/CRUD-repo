@@ -9,6 +9,12 @@ var BookSchema = new mongoose.Schema({
         , default: 0
     }
 , });
+
+BookSchema.methods.update = function(cb){
+    this.title = "Blahblahimatitle";
+    this.save(cb);
+}
+
 /*
 PostSchema.methods.upvote = function(cb) {
   this.upvotes += 1;

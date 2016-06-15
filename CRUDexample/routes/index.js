@@ -39,6 +39,20 @@ router.post('/books', function(req, res, next) {
   });
 });
 
+router.delete('/books', function(req, res, next, id){
+    Book.findById(id).remove(callback);
+/*        if(err) return next(err);
+        console.log("Delete request completed");
+*/
+});
+/*
+router.put('/books/:book/title',function(req,res,next){
+    req.book.update(function(err,book){
+        if(err) { return next(err);}
+        res.json(book);
+    })
+})
+*/
 /*
 TODO: Delete
 router.put('/posts/:post/upvote', function(req, res, next) {

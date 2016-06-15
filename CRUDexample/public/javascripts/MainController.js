@@ -1,11 +1,14 @@
 app.controller('MainController', ['$scope', 'books', function ($scope, books) {
     $scope.test = 'Hello world!';
     $scope.books = books.books;
-    $scope.deleteBook = function (id) {
-        console.log("Deleting book with id: " + id);
-        books.delete(id);
+    $scope.deleteBook = function (book) {
+        console.log("Deleting book with id: " + book._id);
+        books.delete(book);
     }
-    
+    $scope.update = function(book){
+        console.log("Updating book with id: " + book._id);
+        books.update(book);
+    }
     $scope.addBook = function () {
         if (!$scope.title || $scope.title === '') {
             return;
