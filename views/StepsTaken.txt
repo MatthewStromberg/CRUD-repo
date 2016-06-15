@@ -1,6 +1,0 @@
-Written by Matt
-1. Install npm, node, mongodb & all other top-level necessities
-2. npm install -g express-generator "This command let us create *most* files necessary to run the webapp. Atleast on the server side."
-3. express --ejs <CRUDexample> "Creates the server side files. --ejs as opposed to jade, allows us to use plain HTML"
-4. npm install "Will download all package dependencies based on the packages.json file. These files go in the node_modules/ directory, and account for the majority of the files in this webapp. Total size ~2mb"
-5. npm install --save mongoose "Mongoose is a library that provides schemas for MongoDB, allowing us a more simplistic use of the database"
