@@ -21,8 +21,7 @@ app.factory('books', ['$http', function ($http) {
     
     myData.delete = function(book){
         myData.books.splice(myData.books.indexOf(book),1);
-
-        return $http.delete('/books/', book)
+        return $http.delete('/books/' + book._id, book)
    .then(
        function(response){
            console.log("Deleted!?!?");
@@ -36,7 +35,7 @@ app.factory('books', ['$http', function ($http) {
         };
 
    myData.update = function (post) {
-        return $http.put('/books/' + post._id + '/title')
+        return $http.put('/books:' + post._id + '')
             .success(function (data) {
                 post.title = "Hiasdklfjh";
             });

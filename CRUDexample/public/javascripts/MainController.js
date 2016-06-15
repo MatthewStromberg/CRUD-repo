@@ -4,11 +4,12 @@ app.controller('MainController', ['$scope', 'books', function ($scope, books) {
     $scope.deleteBook = function (book) {
         console.log("Deleting book with id: " + book._id);
         books.delete(book);
-    }
-    $scope.update = function(book){
+    };
+    $scope.update = function(book, cost){
         console.log("Updating book with id: " + book._id);
-        books.update(book);
-    }
+        console.log("New cost will be: " + cost);
+        books.update(book,cost);
+    };
     $scope.addBook = function () {
         if (!$scope.title || $scope.title === '') {
             return;

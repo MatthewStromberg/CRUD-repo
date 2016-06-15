@@ -5,46 +5,72 @@ var router = express.Router();
 
 console.log("Index page loaded");
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+    res.render('index', {
+        title: 'Express'
+    });
     console.log("Home page get request!");
 });
 
-router.param('book', function(req, res, next, id) {
-  var query = Book.findById(id);
-  query.exec(function (err, post){
-    if (err) { return next(err); }
-    if (!post) { return next(new Error('can\'t find post')); }
-    req.post = post;
-    return next();
-  });
+router.param('book', function (req, res, next, id) {
+    var query = Book.findById(id);
+    query.exec(function (err, post) {
+        if (err) {
+            return next(err);
+        }
+        if (!post) {
+            return next(new Error('can\'t find post'));
+        }
+        req.post = post;
+        return next();
+    });
 });
 
-router.get('/books', function(req, res, next) {
-  Book.find(function(err, books){
-    if(err){ return next(err); }
-      console.log("Books page get request!");
-    res.json(books);
-  });
+router.get('/books/:book', function(req, res) {
+  res.json(req.post);
 });
 
-router.post('/books', function(req, res, next) {
-  var book = new Book(req.body);
-
-  book.save(function(err, book){
-    if(err){ return next(err); }
-
-    res.json(book);
-      console.log("Books page Post request!");
-  });
+router.get('/books', function (req, res, next) {
+    Book.find(function (err, books) {
+        if (err) {
+            return next(err);
+        }
+        console.log("Books page get request!");
+        res.json(books);
+    });
 });
 
-router.delete('/books', function(req, res, next, id){
-    Book.findById(id).remove(callback);
+router.post('/books', function (req, res, next) {
+    var book = new Book(req.body);
+
+    book.save(function (err, book) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(book);
+        console.log("Books page Post request!");
+    });
+});
+
+router.delete('/books/:id', function (req, res) {
+    Book.findByIdAndRemove(req.params.id, function(err, data) {
+        
+if (err) {
+           console.log("Error in delete!");
+       }
+        return res.json(data);
+
+    });
+
+});
+        
+//    Book.findById(id).remove(callback);
 /*        if(err) return next(err);
         console.log("Delete request completed");
-*/
+
 });
+*/
 /*
 router.put('/books/:book/title',function(req,res,next){
     req.book.update(function(err,book){
