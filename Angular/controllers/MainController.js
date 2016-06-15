@@ -1,11 +1,9 @@
-app.controller('MainCtrl', ['$scope', function ($scope) {
-    $scope.addPost = function () {
-        $scope.posts.push({
-            title: $scope.title, 
-            link: $scope.link, 
-            upvotes: 0
+app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
+    $scope.addPost = function() {
+        $http.get('http://localhost:3000/dowork', {
+            "msg": "hi"
+        }).success(function (data) {
+            console.log(data);
         });
-        $scope.title = '';
-        $scope.link = '';
     };
 }]);

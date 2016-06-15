@@ -3,6 +3,7 @@ var bodyParser = require('body-parser')
 var app = express();
 var mongodb = require('mongodb');
 
+app.set('view engine', 'ejs')
 
 var MongoClient = mongodb.MongoClient;
 
@@ -28,13 +29,17 @@ app.use(bodyParser.urlencoded({
 }))
 
 
+
+
 app.get('/', function (req, res) {
     //C:\Users\Stromz\Documents\GitHub\CRUD-repo\NodeJS/index.html
     var cursor = db.collection('users').find()
     db.collection('users').find().toArray(function (err, results) {
-        console.log(results)
-        res.sendFile(__dirname + '/index.html')
+        if(err) return console.log(err)
+        res.render('index.ejs', {quotes: results})
 
+//        res.sendFile(__dirname + '/index.html')
+//        res.send({quotes: results})
         // send HTML file populated with quotes here
     })
 })
