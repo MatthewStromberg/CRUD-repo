@@ -22,8 +22,19 @@ body {
     display: inline-block;
 }
 
+.costClass{
+    
+}
+
+.costClass button{
+    max-height: 50px;
+    width:130px;
+    display: inline-block;
+    margin-left: 3px;
+}
+
 .booksDisplay {
-    width: 250px;
+    width: 275px;
     color: red;
     border: 2px solid black;
     display: inline-block;

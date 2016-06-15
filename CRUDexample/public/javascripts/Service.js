@@ -34,10 +34,10 @@ app.factory('books', ['$http', function ($http) {
     );
         };
 
-   myData.update = function (book,cost) {
+   myData.update = function (book) {
         return $http.put('/books/' + book._id + '',book)
             .success(function (data) {
-            book.title = data.title;
+//            myData.books[myData.books.indexOf(book)].cost = cost;
 //                book.title = "Hiasdklfjh";
             });
     };

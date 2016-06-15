@@ -5,10 +5,11 @@ app.controller('MainController', ['$scope', 'books', function ($scope, books) {
         console.log("Deleting book with id: " + book._id);
         books.delete(book);
     };
-    $scope.update = function(book, cost){
+    $scope.update = function(book, cost1){
+        book.cost = cost1;
         console.log("Updating book with id: " + book._id);
-        console.log("New cost will be: " + cost);
-        books.update(book,cost);
+        console.log("New cost will be: " + book.cost);
+        books.update(book);
     };
     $scope.addBook = function () {
         if (!$scope.title || $scope.title === '') {

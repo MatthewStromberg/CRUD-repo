@@ -66,14 +66,17 @@ router.delete('/books/:id', function (req, res) {
 });
 
 router.put('/books/:id', function (req, res) {
+    var book = new Book(req.body);
+    console.log("REQUESTXX: " + req.query.cost);
 
+    var query = {
+        "title": book.title
+        , "author": book.author
+        , "description": book.description
+        , "cost": book.cost
+    };
     console.log("Books page update request!");
-    Book.findByIdAndUpdate(req.params.id, {
-        "title": "Catcher in the ballpark"
-        , "author": "J.D. Salinger"
-        , "description": "A book about the wonders of a boy who loses his innocence and also this book was banned in most schools"
-        , "cost": 200
-    }, function (err, data) {
+    Book.findByIdAndUpdate(req.params.id, query, function (err, data) {
         //    Book.findByIdAndUpdate(req.params.id, {"cost":req.params.cost, function (err, data) {
         //req.Book.update(function (err, data) {
         if (err) {

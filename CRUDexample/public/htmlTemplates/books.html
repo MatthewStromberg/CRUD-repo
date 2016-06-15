@@ -3,7 +3,13 @@
     <p><span class="me">Author:</span> {{book.author}}</p>
     <p><span class="me">Description:</span> {{book.description}}</p>
     <p><span class="me">Cost ($):</span> {{book.cost}}</p>
-    <button ng-click="deleteBook(book)">Delete this book</button>
-    <button ng-click="update(book,10)">Update this book</button>
+    <div class="costClass">
+        <div>
+            <input type="number" class="form-control" placeholder="Cost" ng-model="cost1"></input>
+            <button ng-click="update(book,cost1)">Update book cost</button>
+            <button ng-click="deleteBook(book)">Delete this book</button>
+
+        </div>
+    </div>
 
 </div>
